@@ -1,0 +1,9 @@
+services:
+  smtp-email-service:
+    build: .
+    container_name: smtp-email-service
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - smtp_email.env
