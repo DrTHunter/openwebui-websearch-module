@@ -41,6 +41,7 @@ openwebui-smtp-email-service/
 ├── mail_service.py          # FastAPI API service
 ├── smtp_tools.py            # Email-sending Tools class
 ├── smtp_email.env           # SMTP credentials (never commit real ones)
+├── docker-compose.yml       # One-command Docker launcher
 ├── run_email_service.bat    # Windows launcher
 ├── requirements-smtp.txt    # Dependency list
 └── README.md
@@ -78,7 +79,7 @@ SMTP_SERVER="smtp.gmail.com"
 SMTP_PORT=465
 ```
 
-> ⚠️ **Never commit smtp_email.env with real values to GitHub.**
+> ⚠️ Never commit smtp_email.env with real values to GitHub.
 
 ---
 
@@ -92,7 +93,7 @@ Run:
 run_email_service.bat
 ```
 
-Or start manually:
+Or manually:
 
 ```bash
 python mail_service.py
@@ -106,36 +107,40 @@ http://127.0.0.1:8000
 
 ---
 
-# 🐳 Running with Docker
+# 🐳 Running with Docker (One Command)
 
-Create a `Dockerfile`:
-
-```dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-
-COPY requirements-smtp.txt .
-RUN pip install -r requirements-smtp.txt
-
-COPY . .
-
-EXPOSE 8000
-CMD ["python", "mail_service.py"]
-```
-
----
-
-### Build the image
+With Docker Compose, launching the full service is as simple as:
 
 ```bash
-docker build -t smtp-email-service .
+docker compose up -d
 ```
 
-### Run the container
+Your `docker-compose.yml` should look like:
 
-```bash
-docker run -d -p 8000:8000 --env-file smtp_email.env smtp-email-service
+```yaml
+services:
+  smtp-email-service:
+    build: .
+    container_name: smtp-email-service
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - smtp_email.env
+```
+
+This gives users:
+
+* 🟢 One-command startup
+* 🟢 Automatic restart
+* 🟢 Environment-file injection
+* 🟢 Clean log management
+* 🟢 Easy updates (`docker compose pull` if you publish an image later)
+
+Service will be live at:
+
+```
+http://localhost:8000
 ```
 
 ---
@@ -154,29 +159,31 @@ curl -X POST "http://127.0.0.1:8000/send_email" \
 
 # 🧩 Integration with Open-WebUI
 
-You can plug your agent or automation tool into:
+Point your agent/tool configuration at:
 
 ```
 http://localhost:8000/send_email
 ```
 
-Your LLM can now send secure emails natively — perfect for:
+Your LLM can now send secure, authenticated emails as part of its workflows — perfect for:
 
-* Workflow automations
-* Daily summaries
-* Alerts & notifications
-* Custom assistant agents
+* Workflow automation
+* Daily reports
+* Personal assistant features
+* System alerts
+* Scheduled summaries
+* Notification pipelines
 
 ---
 
-# 🎉 You're Ready to Go
+# 🎉 You’re Ready to Go
 
-This tool is easy to run, easy to extend, and fits perfectly into any Open-WebUI workflow.
-If you'd like, I can also generate:
+This tool is:
 
-✨ `tool.json` (for direct Open-WebUI integration)
-✨ A styled logo/banner for the GitHub repo
-✨ A setup guide for Linux or macOS
-✨ A test client script (Python or JS)
+* Easy to run
+* Easy to extend
+* Easy to integrate
+* Perfect for Open-WebUI agents
 
-Just tell me, and I’ll build it.
+
+Just tell me the next step.
