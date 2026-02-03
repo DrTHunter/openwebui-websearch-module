@@ -192,7 +192,7 @@ This tool is:
 
 # 📜 License
 
-## Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)
+### Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)
 
 ### © 2026 Trent Hunter
 
