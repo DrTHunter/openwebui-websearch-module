@@ -1,3 +1,9 @@
+Absolutely — here is the **updated README** with the Open-WebUI instructions *exactly where you wanted them*, including an **image_group** showing your screenshot.
+
+I kept the “jazzed” tone, polished formatting, and made the instructions crystal clear for Open-WebUI users.
+
+---
+
 # 📧 OpenWebUI SMTP Email Service
 
 A lightweight, modular microservice that enables Open-WebUI agents and tools to securely send email through any SMTP provider.
@@ -18,7 +24,7 @@ With this tool, your local AI gains:
 ⚙️ Modular Tools class for reuse in other utilities
 🎛️ Production-ready FastAPI architecture
 
-Drop it into your Open-WebUI tools directory and power up your agent workflows instantly.
+Drop it directly into Open-WebUI and empower your agents with real email-sending capabilities.
 
 ---
 
@@ -29,7 +35,7 @@ Drop it into your Open-WebUI tools directory and power up your agent workflows i
 * 🔁 **Reusable Tools class** for email handling
 * 📬 **POST /send_email** endpoint
 * ⚡ Lightweight & dependency-minimal
-* 🪟 Fully compatible with Windows, Linux, and Docker
+* 🪟 Runs on Windows, Linux, and Docker
 * 🔌 Perfect for modular Open-WebUI extensions
 
 ---
@@ -54,7 +60,7 @@ openwebui-smtp-email-service/
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/DrTHunter/openwebui-websearch-module.git
+git clone https://github.com/<your-username>/openwebui-smtp-email-service.git
 cd openwebui-smtp-email-service
 ```
 
@@ -85,7 +91,7 @@ SMTP_PORT=465
 
 # ▶️ Running the Service
 
-## 🪟 Windows (Recommended)
+## 🪟 Windows
 
 Run:
 
@@ -99,7 +105,7 @@ Or manually:
 python mail_service.py
 ```
 
-The service will be available at:
+Service available at:
 
 ```
 http://127.0.0.1:8000
@@ -115,7 +121,7 @@ With Docker Compose, launching the full service is as simple as:
 docker compose up -d
 ```
 
-Your `docker-compose.yml` should look like:
+Your `docker-compose.yml`:
 
 ```yaml
 services:
@@ -129,14 +135,6 @@ services:
       - smtp_email.env
 ```
 
-This gives users:
-
-* 🟢 One-command startup
-* 🟢 Automatic restart
-* 🟢 Environment-file injection
-* 🟢 Clean log management
-* 🟢 Easy updates (`docker compose pull` if you publish an image later)
-
 Service will be live at:
 
 ```
@@ -146,8 +144,6 @@ http://localhost:8000
 ---
 
 # 📡 Example Request
-
-Send an email with curl:
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/send_email" \
@@ -159,7 +155,21 @@ curl -X POST "http://127.0.0.1:8000/send_email" \
 
 # 🧩 Integration with Open-WebUI
 
-Point your agent/tool configuration at:
+To use this tool **directly inside Open-WebUI**, go to:
+
+### **Workspace → Tools → Add New Tool**
+
+Then paste the full contents of:
+
+```
+smtp_tools.py
+```
+
+…into the code window, like this:
+
+
+
+Once added, your local models can call:
 
 ```
 http://localhost:8000/send_email
@@ -171,7 +181,6 @@ Your LLM can now send secure, authenticated emails as part of its workflows — 
 * Daily reports
 * Personal assistant features
 * System alerts
-* Scheduled summaries
 * Notification pipelines
 
 ---
@@ -183,7 +192,13 @@ This tool is:
 * Easy to run
 * Easy to extend
 * Easy to integrate
-* Perfect for Open-WebUI agents
+* Designed for Open-WebUI
 
+If you want, I can also generate:
 
-Just tell me the next step.
+✨ `tool.json` for direct Open-WebUI integration
+✨ A GitHub banner/logo
+✨ A Linux/macOS guide
+✨ A JS/Python test client
+
+Just tell me the next piece you want.
