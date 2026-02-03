@@ -1,11 +1,9 @@
-# smtp_tools.py
-
 """
-SMTP Email Tools
-Utility class for sending emails using SMTP credentials
-stored inside a .env file.
-
-This file is fully sanitized and safe to publish publicly.
+title: SMTP Email Tools
+author: Trent Hunter
+funding_url:
+version: 2.0
+license: MIT
 """
 
 import smtplib
