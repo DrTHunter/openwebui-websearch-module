@@ -191,16 +191,23 @@ This tool is:
 ---
 
 📜 License
-
 Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)
+
 © 2026 Trent Hunter
+
 This project is licensed under the CC BY-NC 4.0 license.
+
 You are free to:
+
 Share — copy and redistribute the material
+
 Adapt — remix, transform, and build upon it
+
 Under the following terms:
+
 Attribution — You must give appropriate credit.
+
 Non-Commercial — You may not use the material for commercial purposes.
 
 Full license text:
-https://creativecommons.org/licenses/by-nc/4.0/
+https://creativecommons.org/licenses/by-nc/4.0/legalcode
