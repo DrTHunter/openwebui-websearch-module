@@ -54,7 +54,7 @@ openwebui-smtp-email-service/
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone [https://github.com/<your-username>/openwebui-smtp-email-service](https://github.com/DrTHunter/openwebui-websearch-module).git
+git clone https://github.com/DrTHunter/openwebui-websearch-module.git
 cd openwebui-smtp-email-service
 ```
 
