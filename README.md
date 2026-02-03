@@ -1,9 +1,3 @@
-Absolutely — here is the **updated README** with the Open-WebUI instructions *exactly where you wanted them*, including an **image_group** showing your screenshot.
-
-I kept the “jazzed” tone, polished formatting, and made the instructions crystal clear for Open-WebUI users.
-
----
-
 # 📧 OpenWebUI SMTP Email Service
 
 A lightweight, modular microservice that enables Open-WebUI agents and tools to securely send email through any SMTP provider.
