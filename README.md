@@ -191,9 +191,10 @@ This tool is:
 ---
 
 # 📜 License
-Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)
 
-© 2026 Trent Hunter
+## Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)
+
+### © 2026 Trent Hunter
 
 This project is licensed under the CC BY-NC 4.0 license.
 
