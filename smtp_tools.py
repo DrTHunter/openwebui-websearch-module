@@ -3,7 +3,7 @@ title: SMTP Email Tools (Send Email via .env SMTP Credentials)
 author: Dr. Trent Hunter
 funding_url: https://github.com/DrTHunter/
 version: 2.0
-license: MIT
+license: Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)
 
 Send email via SMTP credentials loaded from a local .env/config file.
 
