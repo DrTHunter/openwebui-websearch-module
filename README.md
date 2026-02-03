@@ -167,7 +167,7 @@ smtp_tools.py
 
 …into the code window, like this:
 
-
+https://github.com/DrTHunter/openwebui-websearch-module/blob/main/assets/open_web_ui_new_tool.png?raw=true
 
 Once added, your local models can call:
 
