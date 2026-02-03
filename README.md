@@ -167,7 +167,7 @@ smtp_tools.py
 
 …into the code window, like this:
 
-https://github.com/DrTHunter/openwebui-websearch-module/blob/main/assets/open_web_ui_new_tool.png?raw=true
+![OpenWebUI Tools Screenshot](https://github.com/DrTHunter/openwebui-websearch-module/blob/main/assets/open_web_ui_new_tool.png?raw=true)
 
 Once added, your local models can call:
 
@@ -193,12 +193,3 @@ This tool is:
 * Easy to extend
 * Easy to integrate
 * Designed for Open-WebUI
-
-If you want, I can also generate:
-
-✨ `tool.json` for direct Open-WebUI integration
-✨ A GitHub banner/logo
-✨ A Linux/macOS guide
-✨ A JS/Python test client
-
-Just tell me the next piece you want.
