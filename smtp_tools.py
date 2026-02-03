@@ -1,9 +1,40 @@
 """
-title: SMTP Email Tools
-author: Trent Hunter
-funding_url:
+title: SMTP Email Tools (Send Email via .env SMTP Credentials)
+author: Dr. Trent Hunter
+funding_url: https://github.com/DrTHunter/
 version: 2.0
 license: MIT
+
+Send email via SMTP credentials loaded from a local .env/config file.
+
+This tool is used by a language model. It must be used safely because sending email is an irreversible, high-impact action.
+
+Behavior requirements for the model:
+1. Draft-first rule:
+   - ALWAYS present the complete draft (subject, recipients, body) to the user before sending.
+   - ALWAYS ask for explicit confirmation before calling the send function.
+
+2. Validation:
+   - subject must be non-empty
+   - body should be non-empty unless user explicitly wants it blank
+   - recipients must be a non-empty list of email addresses
+
+3. Credentials / secrets:
+   - NEVER ask the user for SMTP passwords or tokens in chat.
+   - Credentials must come from the local environment/config only.
+   - If credentials are missing, explain which fields are needed and stop.
+
+4. Abuse prevention:
+   - Refuse requests involving spam, scams, impersonation, harassment, or illegal content.
+   - If unclear whether it’s bulk/unsolicited, ask clarifying questions.
+
+Arguments:
+- subject (string): Email subject line.
+- body (string): Plain-text email body.
+- recipients (list[string]): Recipient email addresses.
+
+Returns:
+- status (string): Success/failure message.
 """
 
 import smtplib
