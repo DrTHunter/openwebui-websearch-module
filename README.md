@@ -1,106 +1,182 @@
-Here is a **clean, professional, personal-info-free README** for your Open-WebUI AI Web Search Service repo.
+# 📧 OpenWebUI SMTP Email Service
+
+A lightweight, modular microservice that enables Open-WebUI agents and tools to securely send email through any SMTP provider.
+
+Whether you’re building automation agents, notification systems, personal assistants, or workflow AIs, this service gives your local models the ability to send structured, authenticated emails — safely and efficiently.
 
 ---
 
-# 🚀 OpenWebUI AI WebSearch Service
-
-**A lightweight, modular service that enables AI models running inside Open-WebUI to perform live internet searches and return structured, real-time data.**
-
 ## 📌 Overview
 
-This service acts as a bridge between your local AI environment and the internet, allowing models to request and retrieve external information safely and efficiently. Designed as a drop-in microservice, it integrates smoothly with Open-WebUI, unlocking capabilities like:
+This service provides a clean bridge between **Open-WebUI** and **SMTP email infrastructure**, allowing AI agents to send messages without exposing credentials or requiring complex backend code.
 
-* 🌐 **Live internet search**
-* 🔍 **Real-time data retrieval**
-* 📚 **Supplemental external knowledge**
-* 🤖 **Improved reasoning through updated information**
-* 🔧 **Simple REST API for AI agent integration**
+With this tool, your local AI gains:
 
-Ideal for extending local LLMs with real-world awareness without exposing sensitive credentials or complex backend logic.
+✉️ Automated email sending
+📨 Multi-recipient support
+🔐 Secure, environment-based credential loading
+⚙️ Modular Tools class for reuse in other utilities
+🎛️ Production-ready FastAPI architecture
+
+Drop it into your Open-WebUI tools directory and power up your agent workflows instantly.
 
 ---
 
 ## ⚙️ Features
 
-* **FastAPI server** for clean and reliable request handling
-* **Secure environment-based configuration**
-* **Simple `/search` endpoint** for AI models
-* **Consistent JSON responses**
-* **Compatible with all Open-WebUI agent workflows**
-* **Modular design** for future expansion (email, SMS, monitoring, etc.)
+* 🧩 **FastAPI server** designed for local AI agent calls
+* 🔐 **Environment-based SMTP authentication**
+* 🔁 **Reusable Tools class** for email handling
+* 📬 **POST /send_email** endpoint
+* ⚡ Lightweight & dependency-minimal
+* 🪟 Fully compatible with Windows, Linux, and Docker
+* 🔌 Perfect for modular Open-WebUI extensions
 
 ---
 
 ## 📁 Project Structure
 
 ```
-openwebui-ai-websearch-service/
-├── main.py
-├── tools.py
-├── websearch.env      # API keys & configuration
-├── README.md
-└── requirements.txt
+openwebui-smtp-email-service/
+├── mail_service.py          # FastAPI API service
+├── smtp_tools.py            # Email-sending Tools class
+├── smtp_email.env           # SMTP credentials (never commit real ones)
+├── run_email_service.bat    # Windows launcher
+├── requirements-smtp.txt    # Dependency list
+└── README.md
 ```
 
 ---
 
-## 🔧 Installation
+# 🔧 Installation
 
-Clone the repository:
-
-```bash
-git clone [[https://github.com/<your-username>/openwebui-ai-websearch-service](https://github.com/DrTHunter/openwebui-websearch-module)](https://github.com/DrTHunter/openwebui-websearch-module).git
-cd openwebui-ai-websearch-service
-```
-
-Install dependencies:
+## 1️⃣ Clone the Repository
 
 ```bash
-pip install -r requirements.txt
+git clone https://github.com/<your-username>/openwebui-smtp-email-service.git
+cd openwebui-smtp-email-service
 ```
 
-Add your API keys to `websearch.env`:
+---
+
+## 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements-smtp.txt
+```
+
+---
+
+## 3️⃣ Environment Setup
+
+Edit `smtp_email.env`:
 
 ```env
-SEARCH_API_KEY="your_api_key"
-ENGINE="google"  # or your chosen search provider
+FROM_EMAIL="your_email@example.com"
+PASSWORD="your_app_specific_password"
+SMTP_SERVER="smtp.gmail.com"
+SMTP_PORT=465
+```
+
+> ⚠️ **Never commit smtp_email.env with real values to GitHub.**
+
+---
+
+# ▶️ Running the Service
+
+## 🪟 Windows (Recommended)
+
+Run:
+
+```
+run_email_service.bat
+```
+
+Or start manually:
+
+```bash
+python mail_service.py
+```
+
+The service will be available at:
+
+```
+http://127.0.0.1:8000
 ```
 
 ---
 
-## ▶️ Run the Service
+# 🐳 Running with Docker
 
-```bash
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
+Create a `Dockerfile`:
+
+```dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements-smtp.txt .
+RUN pip install -r requirements-smtp.txt
+
+COPY . .
+
+EXPOSE 8000
+CMD ["python", "mail_service.py"]
 ```
 
 ---
 
-## 📡 Example Request
+### Build the image
 
 ```bash
-curl -X POST "http://localhost:8000/search" \
+docker build -t smtp-email-service .
+```
+
+### Run the container
+
+```bash
+docker run -d -p 8000:8000 --env-file smtp_email.env smtp-email-service
+```
+
+---
+
+# 📡 Example Request
+
+Send an email with curl:
+
+```bash
+curl -X POST "http://127.0.0.1:8000/send_email" \
   -H "Content-Type: application/json" \
-  -d '{"query": "latest AI news"}'
+  -d "{\"subject\":\"Test Email\", \"body\":\"Hello world!\", \"recipients\":[\"example@example.com\"]}"
 ```
 
 ---
 
-## 🧩 Integration with Open-WebUI
+# 🧩 Integration with Open-WebUI
 
-Point your agent or tool configuration at:
+You can plug your agent or automation tool into:
 
 ```
-http://localhost:8000/search
+http://localhost:8000/send_email
 ```
 
-Your LLM can now request real-time internet information during reasoning.
+Your LLM can now send secure emails natively — perfect for:
+
+* Workflow automations
+* Daily summaries
+* Alerts & notifications
+* Custom assistant agents
 
 ---
 
-## 🛡️ License
+# 🎉 You're Ready to Go
 
-MIT License — free to use, modify, and extend.
-Commercial usage allowed. Attribution recommended but not required.
+This tool is easy to run, easy to extend, and fits perfectly into any Open-WebUI workflow.
+If you'd like, I can also generate:
 
-(*If you prefer a more restrictive license like CC-BY-NC, just tell me and I’ll swap it.*)
+✨ `tool.json` (for direct Open-WebUI integration)
+✨ A styled logo/banner for the GitHub repo
+✨ A setup guide for Linux or macOS
+✨ A test client script (Python or JS)
+
+Just tell me, and I’ll build it.
